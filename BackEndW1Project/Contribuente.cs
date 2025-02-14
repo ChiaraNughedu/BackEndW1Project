@@ -136,33 +136,25 @@
             double imposta = 0;
             double reddito = RedditoAnnuale;
 
-            while (reddito > 0)
+            if (reddito >= 75001)
             {
-                if (reddito > 75000)
-                {
-                    imposta += (reddito - 75000) * 0.43;
-                    reddito = 75000;
-                }
-                else if (reddito > 55000)
-                {
-                    imposta += (reddito - 55000) * 0.41;
-                    reddito = 55000;
-                }
-                else if (reddito > 28000)
-                {
-                    imposta += (reddito - 28000) * 0.38;
-                    reddito = 28000;
-                }
-                else if (reddito > 15000)
-                {
-                    imposta += (reddito - 15000) * 0.27;
-                    reddito = 15000;
-                }
-                else
-                {
-                    imposta += reddito * 0.23;
-                    reddito = 0;
-                }
+                imposta = 25420 + (reddito - 75001) * 0.43;
+            }
+            else if (reddito >= 55001 && reddito <= 75000)
+            {
+                imposta = 17220 + (reddito - 55001) * 0.41;
+            }
+            else if (reddito >= 28001 && reddito <= 55000)
+            {
+                imposta = 6960 + (reddito - 28001) * 0.38;
+            }
+            else if (reddito >= 15001 && reddito <= 28000)
+            {
+                imposta = 3450 + (reddito - 15001) * 0.27;
+            }
+            else
+            {
+                imposta = reddito * 0.23;
             }
 
             return imposta;
